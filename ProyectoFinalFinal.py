@@ -1,7 +1,6 @@
 import random
 import json
-with open ("ranking.json") as file:
-    rank=json.load(file)
+
 salida2 =0 
 nombre = input("Ingresa tu nombre: \n")
 rank[nombre]= {"Partidas Ganadas": 0, "Partidas perdidas": 0}
@@ -129,39 +128,42 @@ while salida2 == 0:
         P4, tablero = posInicial0(tablero)
 
         def B4 (tablero,P):
-            direc = int(input("Direccion : \n1. Arriba \n2. Abajo \n3. Derecha \n4. Izquierda \n"))
-            if direc == 1 and (tablero[P[0]-1][P[1]] == 0) and (tablero[P[0]-2][P[1]] == 0) and (tablero[P[0]-3][P[1]] == 0) and (tablero[P[0]-4][P[1]] == 0) and ((P[0] - 4)>= 0) and ((P[0] - 4)<= 7):
-                tablero[P[0]-1][P[1]] = 1
-                tablero[P[0]-2][P[1]] = 1
-                tablero[P[0]-3][P[1]] = 1
-                tablero[P[0]-4][P[1]] = 1
-                print (*tablero, sep="\n")
-                return (tablero)
-            elif(direc == 2) and (tablero[P[0]+1][P[1]] == 0) and (tablero[P[0]+2][P[1]] == 0) and (tablero[P[0]+3][P[1]] == 0) and (tablero[P[0]+4][P[1]] == 0) and ((P[0]+ 4) <= 7) and ((P[0]+ 4) >= 0):
-                tablero[P[0]+1][P[1]] = 1
-                tablero[P[0]+2][P[1]] = 1
-                tablero[P[0]+3][P[1]] = 1
-                tablero[P[0]+4][P[1]] = 1
-                print (*tablero, sep="\n")
-                return tablero
-            elif (direc == 3) and (tablero[P[0]][P[1]+1] == 0) and (tablero[P[0]][P[1]+2] == 0) and (tablero[P[0]][P[1]+3] == 0) and (tablero[P[0]][P[1]+4] == 0) and ((P[1] - 4) >= 0) and ((P[1] - 4) <= 7):
-                tablero[P[0]][P[1]+1] = 1
-                tablero[P[0]][P[1]+2] = 1
-                tablero[P[0]][P[1]+3] = 1
-                tablero[P[0]][P[1]+4] = 1
-                print (*tablero, sep="\n")
-                return tablero
-            elif (direc == 4) and (tablero[P[0]][P[1]-1] == 0) and (tablero[P[0]][P[1]-2] == 0) and (tablero[P[0]][P[1]-3] == 0) and (tablero[P[0]][P[1]-4] == 0) and ((P[1] - 4) >= 0) and ((P[1] - 4) <= 7):
-                tablero[P[0]][P[1]-1] = 1
-                tablero[P[0]][P[1]-2] = 1
-                tablero[P[0]][P[1]-3] = 1
-                tablero[P[0]][P[1]-4] = 1
-                print (*tablero, sep="\n")
-                return tablero
-            else:
-                print("Posicion incorrecta ó ocupada")
-                return B4 (tablero,P)
-
+            try:
+                direc = int(input("Direccion : \n1. Arriba \n2. Abajo \n3. Derecha \n4. Izquierda \n"))
+                if direc == 1 and (tablero[P[0]-1][P[1]] == 0) and (tablero[P[0]-2][P[1]] == 0) and (tablero[P[0]-3][P[1]] == 0) and (tablero[P[0]-4][P[1]] == 0) and ((P[0] - 4)>= 0) and ((P[0] - 4)<= 7):
+                    tablero[P[0]-1][P[1]] = 1
+                    tablero[P[0]-2][P[1]] = 1
+                    tablero[P[0]-3][P[1]] = 1
+                    tablero[P[0]-4][P[1]] = 1
+                    print (*tablero, sep="\n")
+                    return (tablero)
+                elif(direc == 2) and (tablero[P[0]+1][P[1]] == 0) and (tablero[P[0]+2][P[1]] == 0) and (tablero[P[0]+3][P[1]] == 0) and (tablero[P[0]+4][P[1]] == 0) and ((P[0]+ 4) <= 7) and ((P[0]+ 4) >= 0):
+                    tablero[P[0]+1][P[1]] = 1
+                    tablero[P[0]+2][P[1]] = 1
+                    tablero[P[0]+3][P[1]] = 1
+                    tablero[P[0]+4][P[1]] = 1
+                    print (*tablero, sep="\n")
+                    return tablero
+                elif (direc == 3) and (tablero[P[0]][P[1]+1] == 0) and (tablero[P[0]][P[1]+2] == 0) and (tablero[P[0]][P[1]+3] == 0) and (tablero[P[0]][P[1]+4] == 0) and ((P[1] - 4) >= 0) and ((P[1] - 4) <= 7):
+                    tablero[P[0]][P[1]+1] = 1
+                    tablero[P[0]][P[1]+2] = 1
+                    tablero[P[0]][P[1]+3] = 1
+                    tablero[P[0]][P[1]+4] = 1
+                    print (*tablero, sep="\n")
+                    return tablero
+                elif (direc == 4) and (tablero[P[0]][P[1]-1] == 0) and (tablero[P[0]][P[1]-2] == 0) and (tablero[P[0]][P[1]-3] == 0) and (tablero[P[0]][P[1]-4] == 0) and ((P[1] - 4) >= 0) and ((P[1] - 4) <= 7):
+                    tablero[P[0]][P[1]-1] = 1
+                    tablero[P[0]][P[1]-2] = 1
+                    tablero[P[0]][P[1]-3] = 1
+                    tablero[P[0]][P[1]-4] = 1
+                    print (*tablero, sep="\n")
+                    return tablero
+                else:
+                    print("Posicion incorrecta ó ocupada")
+                    return B4 (tablero,P)
+               except:
+                    print("Posicion incorrecta ó ocupada")
+                    return B4 (tablero,P)
         tablero = B4 (tablero,P4)
         tableroEnemigo = []
         for i in range(8):
@@ -330,13 +332,13 @@ while salida2 == 0:
 
         def caerDisparo (tablero,tablero2, disparo):
             print("------------------------")
-            if tablero2[disparo[0]][disparo[1]] == 8:
+            if tablero2[disparo[0]][disparo[1]] == 8 or tablero2[disparo[0]][disparo[1]] == 4:
                 print (*tablero, sep="\n")
                 print("Ya has disparado a esta posición, Intentalo de nuevo")
                 return (caerDisparo(tablero,tablero2,disparo1()))
             elif tablero2[disparo[0]][disparo[1]] == 1:
-                tablero[disparo[0]][disparo[1]] = 8
-                tablero2[disparo[0]][disparo[1]] = 8
+                tablero[disparo[0]][disparo[1]] = 4
+                tablero2[disparo[0]][disparo[1]] = 4
                 print (*tablero, sep="\n")
                 print ("Le has dado a un barco, sigue así ")
                 return tablero,tablero2
